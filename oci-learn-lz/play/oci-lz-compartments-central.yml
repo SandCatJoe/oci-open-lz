@@ -40,25 +40,25 @@ compartments_configuration:
           freeform_tags:
             lz-data-type: staging
             lz-cmp-type: workload-staging
-        children:
-          CMP-WORKLOAD-STAGING-NETWORK-KEY:
-            name: lz-s-cmp-workload-staging-network
-            description: Landing Zone workload staging network compartment
-            freeform_tags:
-              lz-data-type: staging
-              lz-cmp-type: workload-staging-network
-          CMP-WORKLOAD-STAGING-DB-ORA-KEY:
-            name: lz-s-cmp-workload-staging-db-ora
-            description: Landing Zone workload staging database Oracle compartment
-            freeform_tags:
-              lz-data-type: staging
-              lz-cmp-type: workload-staging-db-ora
-          CMP-WORKLOAD-STAGING-DB-SQL-KEY:
-            name: lz-s-cmp-workload-staging-db-sql
-            description: Landing Zone workload staging database SQL Server compartment
-            freeform_tags:
-              lz-data-type: staging
-              lz-cmp-type: workload-staging-db-sql
+          children:
+            CMP-WORKLOAD-STAGING-NETWORK-KEY:
+              name: lz-s-cmp-workload-staging-network
+              description: Landing Zone workload staging network compartment
+              freeform_tags:
+                lz-data-type: staging
+                lz-cmp-type: workload-staging-network
+            CMP-WORKLOAD-STAGING-DB-ORA-KEY:
+              name: lz-s-cmp-workload-staging-db-ora
+              description: Landing Zone workload staging database Oracle compartment
+              freeform_tags:
+                lz-data-type: staging
+                lz-cmp-type: workload-staging-db-ora
+            CMP-WORKLOAD-STAGING-DB-SQL-KEY:
+              name: lz-s-cmp-workload-staging-db-sql
+              description: Landing Zone workload staging database SQL Server compartment
+              freeform_tags:
+                lz-data-type: staging
+                lz-cmp-type: workload-staging-db-sql
 groups_configuration:
   groups: {}
 dynamic_groups_configuration:
