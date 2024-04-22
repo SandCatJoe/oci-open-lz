@@ -21,8 +21,3 @@ compartments_configuration:
           freeform_tags:
             lz-data-type: staging
             lz-cmp-type: workload-staging-network
-groups_configuration:
-  groups: {}
-dynamic_groups_configuration:
-  dynamic_groups: {}
-policies_configuration: {}
