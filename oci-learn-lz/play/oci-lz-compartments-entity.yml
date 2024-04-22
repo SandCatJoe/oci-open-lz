@@ -5,10 +5,10 @@
 
 ---
 compartments_configuration:
+  default_parent_id: CMP-WORKLOAD-KEY
   enable_delete: true
   compartments:
     CMP-WORKLOAD-STAGING-KEY:
-      category_compartment_id: CMP-WORKLOAD-KEY
       name: lz-s-cmp-workload-staging
       description: Landing Zone workload staging compartment
       freeform_tags:
@@ -21,3 +21,16 @@ compartments_configuration:
           freeform_tags:
             lz-data-type: staging
             lz-cmp-type: workload-staging-network
+        CMP-WORKLOAD-STAGING-DB-ORA-KEY:
+          name: lz-s-cmp-workload-staging-db-ora
+          description: Landing Zone workload staging database Oracle compartment
+          freeform_tags:
+            lz-data-type: staging
+            lz-cmp-type: workload-staging-db-ora
+        CMP-WORKLOAD-STAGING-DB-SQL-KEY:
+          name: lz-s-cmp-workload-staging-db-sql
+          description: Landing Zone workload staging database SQL Server compartment
+          freeform_tags:
+            lz-data-type: staging
+            lz-cmp-type: workload-staging-db-sql
+
