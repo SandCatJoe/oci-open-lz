@@ -1,0 +1,40 @@
+# ####################################################################################################### #
+# Copyright (c) 2023 Oracle and/or its affiliates,  All rights reserved.                                  #
+# Licensed under the Universal Permissive License v 1.0 as shown at https: //oss.oracle.com/licenses/upl. #                                            #
+# ####################################################################################################### #
+
+---
+compartments_configuration:
+  default_parent_id: TENANCY-ROOT
+  enable_delete: true
+  compartments:
+    CMP-COMMON-KEY:
+      name: lz-s-cmp-common
+      description: Landing Zone common compartment
+      freeform_tags:
+        lz-data-type: staging
+        lz-cmp-type: common
+      children:
+        CMP-COMMON-NETWORK-KEY:
+          name: lz-s-cmp-common-network
+          description: Landing Zone common network compartment
+          freeform_tags:
+            lz-data-type: staging
+            lz-cmp-type: common-network
+        CMP-COMMON-SECURITY-KEY:
+          name: lz-s-cmp-common-security
+          description: Landing Zone common security compartment
+          freeform_tags:
+            lz-data-type: staging
+            lz-cmp-type: common-security
+    CMP-WORKLOAD-KEY:
+      name: lz-s-cmp-workload
+      description: Landing Zone workload compartment
+      freeform_tags:
+        lz-data-type: staging
+        lz-cmp-type: workload
+groups_configuration:
+  groups: {}
+dynamic_groups_configuration:
+  dynamic_groups: {}
+policies_configuration: {}
