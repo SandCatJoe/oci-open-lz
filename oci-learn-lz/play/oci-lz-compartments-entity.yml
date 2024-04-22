@@ -5,10 +5,10 @@
 
 ---
 compartments_configuration:
-  default_parent_id: CMP-WORKLOAD-KEY
   enable_delete: true
   compartments:
     CMP-WORKLOAD-STAGING-KEY:
+      parent_id: CMP-WORKLOAD-KEY
       name: lz-s-cmp-workload-staging
       description: Landing Zone workload staging compartment
       freeform_tags:
