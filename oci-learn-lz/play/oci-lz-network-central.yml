@@ -51,9 +51,9 @@ network_configuration:
               route_rules: {}
           subnets:
             SUBNET-HUB-KEY:
-              cidr_block: 10.0.0.0/26
+              cidr_block: 10.1.0.0/24
               dhcp_options_key: default_dhcp_options
-              display_name: sn-fra-hub-fw
+              display_name: sn-hub-firewall
               dns_label: snfrahubfw
               ipv6cidr_blocks: []
               prohibit_internet_ingress: true
