@@ -30,12 +30,12 @@ network_configuration:
             SECLIST-LB-KEY:
               display_name: seclist-lb
               egress_rules:
-                description: egress to 0.0.0.0/0 over ALL protocols
+              - description: egress to 0.0.0.0/0 over ALL protocols
                 stateless: false
                 protocol: ALL
                 dst: 0.0.0.0/0
                 dst_type: CIDR_BLOCK
-              ingress_rules:
+              - ingress_rules:
                 description: ingress from Home over TCP port 22
                 stateless: false
                 protocol: TCP
@@ -43,7 +43,7 @@ network_configuration:
                 src_type: CIDR_BLOCK
                 dst_port_min: 22
                 dst_port_max: 22
-              ingress_rules:
+              - ingress_rules:
                 description: ingress from SSL VPN over TCP port 22
                 stateless: false
                 protocol: TCP
@@ -51,7 +51,7 @@ network_configuration:
                 src_type: CIDR_BLOCK
                 dst_port_min: 22
                 dst_port_max: 22
-              ingress_rules:
+              - ingress_rules:
                 description: ingress from SSL VPN over TCP port 22
                 stateless: false
                 protocol: TCP
