@@ -62,7 +62,7 @@ network_configuration:
             RT-HUB-TRUST-KEY:
               display_name: lz-s-rt-hub-trusted-lhr
               route_rules: {}
-            RT-HUB-TRUST-KEY:
+            RT-HUB-UNTRUST-KEY:
               display_name: lz-s-rt-hub-untrusted-lhr
               route_rules: {}
           subnets:
