@@ -27,7 +27,7 @@ network_configuration:
               protocol: ALL
               stateless: false
           security_lists:
-            SECLIST-LB-KEY:
+          - SECLIST-LB-KEY:
               display_name: seclist-lb
               egress_rules:
                 description: egress to 0.0.0.0/0 over ALL protocols
