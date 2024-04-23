@@ -28,7 +28,7 @@ network_configuration:
               stateless: false
           security_lists:
             SECLIST-LOAD-BALANCER-KEY:
-              display_name: seclist-load-balancer
+              display_name: seclist-hub-network-lb
               egress_rules:
               - description: egress to 0.0.0.0/0 over ALL protocols
                 stateless: false
@@ -51,7 +51,7 @@ network_configuration:
                 icmp_type: 3
                 icmp_code: 4
             SECLIST-NETWORK-FIREWALL-KEY:
-              display_name: seclist-network-firewall
+              display_name: seclist-hub-network-firewall
               egress_rules:
               - description: egress to 0.0.0.0/0 over ALL protocols
                 stateless: false
@@ -74,7 +74,7 @@ network_configuration:
                 icmp_type: 3
                 icmp_code: 4
             SECLIST-TRUST-KEY:
-              display_name: seclist-trusted
+              display_name: seclist-hub-trusted
               egress_rules:
               - description: egress to 0.0.0.0/0 over ALL protocols
                 stateless: false
@@ -97,7 +97,7 @@ network_configuration:
                 icmp_type: 3
                 icmp_code: 4
             SECLIST-UNTRUST-KEY:
-              display_name: seclist-untrusted
+              display_name: seclist-hub-untrusted
               egress_rules:
               - description: egress to 0.0.0.0/0 over ALL protocols
                 stateless: false
@@ -125,28 +125,28 @@ network_configuration:
           is_oracle_gua_allocation_enabled: false
           route_tables:
             RT-HUB-FIREWALL-KEY:
-              display_name: lz-s-rt-hub-firewall
+              display_name: rt-hub-firewall
               route_rules: {}
             RT-HUB-LB-KEY:
-              display_name: lz-s-rt-hub-load-balance-lhr
+              display_name: rt-hub-network-lb-lhr
               route_rules:
                 internet_route:
-                  network_entity_key: HUB-INTERNET-GATEWAY-KEY
+                  network_entity_key: GATEWAY-HUB-INTERNET-KEY
                   description: Route for internet access
                   destination: 0.0.0.0/0
                   destination_type: CIDR_BLOCK
             RT-HUB-TRUST-KEY:
-              display_name: lz-s-rt-hub-trusted-lhr
+              display_name: rt-hub-trusted-lhr
               route_rules: {}
             RT-HUB-UNTRUST-KEY:
-              display_name: lz-s-rt-hub-untrusted-lhr
+              display_name: rt-hub-untrusted-lhr
               route_rules: {}
           subnets:
             SUBNET-HUB-FIREWALL-KEY:
               cidr_block: 10.0.0.0/24
               dhcp_options_key: default_dhcp_options
               display_name: sn-hub-firewall
-              dns_label: hubnfw
+              dns_label: nfw
               ipv6cidr_blocks: []
               prohibit_internet_ingress: true
               prohibit_public_ip_on_vnic: true
@@ -157,7 +157,7 @@ network_configuration:
               cidr_block: 10.0.1.0/24
               dhcp_options_key: default_dhcp_options
               display_name: sn-hub-network-lb
-              dns_label: hubnlb
+              dns_label: nlb
               ipv6cidr_blocks: []
               prohibit_internet_ingress: false
               prohibit_public_ip_on_vnic: false
@@ -168,7 +168,7 @@ network_configuration:
               cidr_block: 10.0.2.0/24
               dhcp_options_key: default_dhcp_options
               display_name: sn-hub-trusted
-              dns_label: hubntrst
+              dns_label: trst
               ipv6cidr_blocks: []
               prohibit_internet_ingress: true
               prohibit_public_ip_on_vnic: true
@@ -179,7 +179,7 @@ network_configuration:
               cidr_block: 10.0.3.0/24
               dhcp_options_key: default_dhcp_options
               display_name: sn-hub-untrusted
-              dns_label: hubuntrst
+              dns_label: utrst
               ipv6cidr_blocks: []
               prohibit_internet_ingress: true
               prohibit_public_ip_on_vnic: true
@@ -188,14 +188,14 @@ network_configuration:
               - SECLIST-UNTRUST-KEY
           vcn_specific_gateways:
             internet_gateways: 
-              HUB-INTERNET-GATEWAY-KEY:
+              GATEWAY-HUB-INTERNET-KEY:
                 enabled: true
-                display_name: hub-vcn-internet-gateway
+                display_name: igw-hub
             nat_gateways:
-              HUB-NAT-GATEWAY-KEY:
+              GATEWAY-HUB-NAT-KEY:
                 block_traffic: false
-                display_name: hub-vcn-nat-gateway
+                display_name: ngw-hub
             service_gateways:
-              HUB-SERVICE-GATEWAY:
-                display_name: hub-vcn-service-gateway
+              GATEWAY-HUB-SERVICE-GATEWAY:
+                display_name: sg-hub
                 services: all-services
