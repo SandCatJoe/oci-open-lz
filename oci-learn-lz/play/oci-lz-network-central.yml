@@ -38,14 +38,14 @@ network_configuration:
               ingress_rules:
               - description: ICMP 
                 stateless: false
-                protocol: TCP
+                protocol: ICMP
                 src : 10.0.0.0/16
                 src_type: CIDR_BLOCK
                 icmp_type: 3
                 icmp_code: -1
               - description: ICMP
                 stateless: false
-                protocol: TCP
+                protocol: ICMP
                 src : 0.0.0.0/0
                 src_type: CIDR_BLOCK
                 icmp_type: 3
@@ -61,14 +61,14 @@ network_configuration:
               ingress_rules:
               - description: ICMP
                 stateless: false
-                protocol: TCP
+                protocol: ICMP
                 src : 10.0.0.0/16
                 src_type: CIDR_BLOCK
                 icmp_type: 3
                 icmp_code: -1
               - description: ICMP
                 stateless: false
-                protocol: TCP
+                protocol: ICMP
                 src : 0.0.0.0/0
                 src_type: CIDR_BLOCK
                 icmp_type: 3
@@ -84,14 +84,14 @@ network_configuration:
               ingress_rules:
               - description: ICMP
                 stateless: false
-                protocol: TCP
+                protocol: ICMP
                 src : 10.0.0.0/16
                 src_type: CIDR_BLOCK
                 icmp_type: 3
                 icmp_code: -1
               - description: ICMP
                 stateless: false
-                protocol: TCP
+                protocol: ICMP
                 src : 0.0.0.0/0
                 src_type: CIDR_BLOCK
                 icmp_type: 3
@@ -107,14 +107,14 @@ network_configuration:
               ingress_rules:
               - description: ICMP
                 stateless: false
-                protocol: TCP
+                protocol: ICMP
                 src : 10.0.0.0/16
                 src_type: CIDR_BLOCK
                 icmp_type: 3
                 icmp_code: -1
               - description: ICMP
                 stateless: false
-                protocol: TCP
+                protocol: ICMP
                 src : 0.0.0.0/0
                 src_type: CIDR_BLOCK
                 icmp_type: 3
