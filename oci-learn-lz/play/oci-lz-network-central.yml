@@ -73,7 +73,7 @@ network_configuration:
                 src_type: CIDR_BLOCK
                 icmp_type: 3
                 icmp_code: 4
-            SECLIST-NETWORK-TRUST-KEY:
+            SECLIST-TRUST-KEY:
               display_name: seclist-trusted
               egress_rules:
               - description: egress to 0.0.0.0/0 over ALL protocols
@@ -96,7 +96,7 @@ network_configuration:
                 src_type: CIDR_BLOCK
                 icmp_type: 3
                 icmp_code: 4
-            SECLIST-NETWORK-UNTRUST-KEY:
+            SECLIST-UNTRUST-KEY:
               display_name: seclist-untrusted
               egress_rules:
               - description: egress to 0.0.0.0/0 over ALL protocols
