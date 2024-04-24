@@ -19,7 +19,7 @@ network_configuration:
           block_nat_traffic: false
           cidr_blocks:
           - 10.0.0.0/16
-          display_name: lz-s-vcn-hub-lhr
+          display_name: vcn-hub-lhr
           dns_label: hub
           is_ipv6enabled: false
           is_oracle_gua_allocation_enabled: false
