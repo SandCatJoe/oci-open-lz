@@ -267,6 +267,90 @@ network_configuration:
                 display_name: sg-hub
                 services: all-services
 
+        network_firewalls_configuration:
+          network_firewalls:
+            NFW-HUB-NS-KEY:
+              display_name: nfw-hub-ns
+              ipv4address: 10.0.1.10
+              subnet_key: SUBNET-HUB-FW-NS-KEY
+              network_firewall_policy_key: NFW-POLICY-HUB-NS-POL1-KEY
+#            NFW-FRA-HUB-EW-KEY:
+#              display_name: nfw--hub-ew
+#              ipv4address: 10.0.2.10
+#              subnet_key: SUBNET-HUB-FW-NS-KEY
+#              network_firewall_policy_key: NFW-POLICY-HUB-EW-POL1-KEY
+          network_firewall_policies:
+            NFW-POLICY-HUB-NS-POL1-KEY:
+              display_name: nfw-policy-hub-ns-pol1
+              application_lists:
+                NFW-APP-LIST-HUB-NS-1:
+                  application_list_name: nfw-app-list-hub-ns-1
+                  application_values:
+                    NFW-APP-LIST-HUB-NS-1-1:
+                      maximum_port: 80
+                      minimum_port: 80
+                      type: TCP
+                    NFW-APP-LIST-HUB-NS-1-2:
+                      maximum_port: 22
+                      minimum_port: 22
+                      type: TCP
+              ip_address_lists:
+                NFW-IP-LIST-HUB-NS-1:
+                  ip_address_list_name: nfw-ip-list-hub-ns-1
+                  ip_address_list_value:
+                  - 10.0.0.155
+              security_rules:
+                SECURITY-RULE-A:
+                  action: ALLOW
+                  name: SecurityRuleA
+                  conditions:
+                    PRD-COND1-A:
+                      applications:
+                      - nfw-app-list-hub-ns-1
+                      destinations: []
+                      sources: []
+                      urls: []
+                SECURITY-RULE-C:
+                  action: ALLOW
+                  name: SecurityRuleC
+                  conditions:
+                    PRD-COND1-A:
+                      applications: []
+                      destinations: []
+                      sources:
+                      - nfw-ip-list-hub-ns-1
+                      urls:
+                      - nfw-url-list-hub-ns-2
+                SECURITY-RULE-B:
+                  action: INSPECT
+                  inspection: INTRUSION_DETECTION
+                  name: SecurityRuleB
+                  conditions:
+                    PRD-COND1-B:
+                      applications:
+                      - nfw-app-list-hub-ns-1
+                      destinations: []
+                      sources:
+                      - nfw-ip-list-hub-ns-1
+                      urls:
+                      - nfw-url-list-hub-ns-1
+              url_lists:
+                NFW-URL-LIST-HUB-NS-1:
+                  url_list_name: nfw-url-list-hub-ns-1
+                  url_list_values:
+                    NFW-URL-LIST-HUB-NS-1-1:
+                      pattern: testapp1.example.com
+                      type: SIMPLE
+                NFW-URL-LIST-HUB-NS-2:
+                  url_list_name: nfw-url-list-hub-ns-2
+                  url_list_values:
+                    NFW-URL-LIST-HUB-NS-2-1:
+                      pattern: pypi.python.org
+                      type: SIMPLE
+                    NFW-URL-LIST-HUB-NS-2-2:
+                      pattern: www.google.com
+                      type: SIMPLE
+
 #        workload_load_balancers:
 #          LB-HUB-KEY:
 #            backend_sets:
@@ -314,9 +398,9 @@ network_configuration:
 #                  url_path: "/testapp2/"
 #                name: lb-hub-bkset-oe01-p-01-app2
 #                policy: LEAST_CONNECTIONS
-            display_name: lb-hub-01
-            ip_mode: IPV4
-            is_private: false
+#            display_name: lb-hub-01
+#            ip_mode: IPV4
+#            is_private: false
 #            listeners:
 #              LB1-LSNR-1-80:
 #                connection_configuration:
