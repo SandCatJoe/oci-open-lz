@@ -106,7 +106,7 @@ network_configuration:
                   stateless: false
  
           default-security-list:
-            display_name: seclist-def-hub-vcn
+            display_name: sl-def-hub-vcn
             egress_rules: []
             ingress_rules:
             - stateless: false
@@ -132,7 +132,7 @@ network_configuration:
               icmp_code: -1
           security_lists:
             SECLIST-01-HUB-KEY:
-              display_name: seclist-hub-lb
+              display_name: sl-hub-01
               egress_rules:
               - description: egress to 0.0.0.0/0 over ALL protocols
                 dst: 0.0.0.0/0
@@ -147,8 +147,7 @@ network_configuration:
                 src_type: CIDR_BLOCK
                 stateless: false
             SECLIST-02-HUB-KEY:
-              display_name: seclist-hub-network-firewall
-              display_name: sl-02-hub-vcn
+              display_name: sl-hub-02
               egress_rules:
               - description: egress to 0.0.0.0/0 over TCP
                 dst: 0.0.0.0/0
