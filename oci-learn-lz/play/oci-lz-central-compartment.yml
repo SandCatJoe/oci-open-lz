@@ -11,16 +11,22 @@ compartments_configuration:
     lz-data-type: staging
     lz-version: 0.1
   compartments:
-    CMP-SHARED-NETWORK-KEY:
-      name: lz-s-cmp-shared-network
-      description: Landing Zone shared network compartment
+    CMP-SHARED-KEY:
+      name: lz-s-cmp-shared
+      description: Landing Zone shared compartment
       freeform_tags:
-        lz-cmp-type: shared-network
-    CMP-SHARED-SECURITY-KEY:
-      name: lz-s-cmp-shared-security
-      description: Landing Zone shared security compartment
-      freeform_tags:
-        lz-cmp-type: shared-security
+        lz-cmp-type: shared
+      children:
+        CMP-SHARED-NETWORK-KEY:
+          name: lz-s-cmp-shared-network
+          description: Landing Zone shared network compartment
+          freeform_tags:
+            lz-cmp-type: shared-network
+        CMP-SHARED-SECURITY-KEY:
+          name: lz-s-cmp-shared-security
+          description: Landing Zone shared security compartment
+          freeform_tags:
+            lz-cmp-type: shared-security
     CMP-COMMON-KEY:
       name: lz-s-cmp-common
       description: Landing Zone common compartment
