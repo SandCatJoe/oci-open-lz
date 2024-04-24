@@ -278,7 +278,7 @@ network_configuration:
                 network_details:
                   attached_resource_key: VCN-HUB-KEY
                   type: VCN
-                  route_table_key: RT-HUB-DRG-KEY
+                  route_table_key: DRG-RT-HUB-KEY
 #              DRGATT-HUB-VCN-OE01-CO-KEY:
 #                display_name: drgatt-fra-hub-fra-oe01-co-vcn
 #                drg_route_table_key: DRG-RT-SPOKES-KEY
