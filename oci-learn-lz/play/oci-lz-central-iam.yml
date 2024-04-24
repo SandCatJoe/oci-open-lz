@@ -37,7 +37,7 @@ dynamic_groups_configuration:
     DGP-SEC-FUN:
       name: lz-s-dgp-security-functions
       description: DGP.01 Allows all resources of type fnfunc in the Security compartment
-      matching_rule: ALL {resource.type = 'fnfun', resource.compartment.id = 'lz-s-cmp-shared-security'}
+      matching_rule: ALL {resource.type = 'fnfun', resource.compartment.id = CMP-SHARED-SECURITY-KEY}
 
       
 policies_configuration:
