@@ -192,7 +192,7 @@ network_configuration:
             RT-HUB-MGMT-KEY:
               display_name: rt-hub-management
               route_rules: {}
-              RT-HUB-LOGS-KEY:
+            RT-HUB-LOGS-KEY:
               display_name: rt-hub-logs
               route_rules: {}
 
