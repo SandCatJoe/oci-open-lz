@@ -30,14 +30,14 @@ groups_configuration:
       description: GRP.07 Tenancy global and shared security administration group
 
 
-dynamic_groups_configuration:
-  default_defined_tags: 
-  default_freeform_tags: 
-  dynamic_groups:
-    DGP-SEC-FUN:
-      name: lz-s-dgp-security-functions
-      description: DGP.01 Allows all resources of type fnfunc in the Security compartment
-      matching_rule: ALL {resource.type = 'fnfun', resource.compartment.id = CMP-SHARED-SECURITY-KEY}
+#dynamic_groups_configuration:
+#  default_defined_tags: 
+#  default_freeform_tags: 
+#  dynamic_groups:
+#    DGP-SEC-FUN:
+#      name: lz-s-dgp-security-functions
+#      description: DGP.01 Allows all resources of type fnfunc in the Security compartment
+#      matching_rule: ALL {resource.type = 'fnfun', resource.compartment.id = CMP-SHARED-SECURITY-KEY}
 
       
 policies_configuration:
