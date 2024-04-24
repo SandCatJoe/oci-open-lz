@@ -19,110 +19,148 @@ network_configuration:
           block_nat_traffic: false
           cidr_blocks:
           - 10.0.0.0/16
-          default-security-list:
-            egress_rules:
-            - description: egress to 0.0.0.0/0 over ALL protocols
-              dst: 0.0.0.0/0
-              dst_type: CIDR_BLOCK
-              protocol: ALL
-              stateless: false
-          security_lists:
-            SECLIST-LOAD-BALANCER-KEY:
-              display_name: seclist-hub-network-lb
-              egress_rules:
-              - description: egress to 0.0.0.0/0 over ALL protocols
-                stateless: false
-                protocol: ALL
-                dst: 0.0.0.0/0
-                dst_type: CIDR_BLOCK
-              ingress_rules:
-              - description: ICMP 
-                stateless: false
-                protocol: ICMP
-                src : 10.0.0.0/16
-                src_type: CIDR_BLOCK
-                icmp_type: 3
-                icmp_code: -1
-              - description: ICMP
-                stateless: false
-                protocol: ICMP
-                src : 0.0.0.0/0
-                src_type: CIDR_BLOCK
-                icmp_type: 3
-                icmp_code: 4
-            SECLIST-NETWORK-FIREWALL-KEY:
-              display_name: seclist-hub-network-firewall
-              egress_rules:
-              - description: egress to 0.0.0.0/0 over ALL protocols
-                stateless: false
-                protocol: ALL
-                dst: 0.0.0.0/0
-                dst_type: CIDR_BLOCK
-              ingress_rules:
-              - description: ICMP
-                stateless: false
-                protocol: ICMP
-                src : 10.0.0.0/16
-                src_type: CIDR_BLOCK
-                icmp_type: 3
-                icmp_code: -1
-              - description: ICMP
-                stateless: false
-                protocol: ICMP
-                src : 0.0.0.0/0
-                src_type: CIDR_BLOCK
-                icmp_type: 3
-                icmp_code: 4
-            SECLIST-TRUST-KEY:
-              display_name: seclist-hub-trusted
-              egress_rules:
-              - description: egress to 0.0.0.0/0 over ALL protocols
-                stateless: false
-                protocol: ALL
-                dst: 0.0.0.0/0
-                dst_type: CIDR_BLOCK
-              ingress_rules:
-              - description: ICMP
-                stateless: false
-                protocol: ICMP
-                src : 10.0.0.0/16
-                src_type: CIDR_BLOCK
-                icmp_type: 3
-                icmp_code: -1
-              - description: ICMP
-                stateless: false
-                protocol: ICMP
-                src : 0.0.0.0/0
-                src_type: CIDR_BLOCK
-                icmp_type: 3
-                icmp_code: 4
-            SECLIST-UNTRUST-KEY:
-              display_name: seclist-hub-untrusted
-              egress_rules:
-              - description: egress to 0.0.0.0/0 over ALL protocols
-                stateless: false
-                protocol: ALL
-                dst: 0.0.0.0/0
-                dst_type: CIDR_BLOCK
-              ingress_rules:
-              - description: ICMP
-                stateless: false
-                protocol: ICMP
-                src : 10.0.0.0/16
-                src_type: CIDR_BLOCK
-                icmp_type: 3
-                icmp_code: -1
-              - description: ICMP
-                stateless: false
-                protocol: ICMP
-                src : 0.0.0.0/0
-                src_type: CIDR_BLOCK
-                icmp_type: 3
-                icmp_code: 4
           display_name: lz-s-vcn-hub-lhr
           dns_label: hub
           is_ipv6enabled: false
           is_oracle_gua_allocation_enabled: false
+ 
+          network_security_groups:
+            NSG-01-HUB-VCN-KEY:
+              display_name: nsg-01-hub-vcn
+              egress_rules:
+                anywhere:
+                  description: egress to 0.0.0.0/0 over TCP
+                  dst: 0.0.0.0/0
+                  dst_type: CIDR_BLOCK
+                  protocol: TCP
+                  stateless: false
+              freeform_tags: 
+              ingress_rules:
+                ssh_22:
+                  description: ingress from 0.0.0.0/0 over TCP22
+                  dst_port_max: 22
+                  dst_port_min: 22
+                  protocol: TCP
+                  src: 0.0.0.0/0
+                  src_type: CIDR_BLOCK
+                  stateless: false
+            NSG-02-HUB-VCN-KEY:
+              display_name: nsg-02-hub-vcn
+              egress_rules:
+                anywhere:
+                  description: egress to 0.0.0.0/0 over TCP
+                  dst: 0.0.0.0/0
+                  dst_type: CIDR_BLOCK
+                  protocol: TCP
+                  stateless: false
+              ingress_rules:
+                http_80:
+                  description: ingress from 0.0.0.0/0 over HTTP8080
+                  dst_port_max: 80
+                  dst_port_min: 80
+                  protocol: TCP
+                  src: 0.0.0.0/0
+                  src_type: CIDR_BLOCK
+                  stateless: false
+                https_443:
+                  description: ingress from 0.0.0.0/0 over HTTPs443
+                  dst_port_max: 443
+                  dst_port_min: 443
+                  protocol: TCP
+                  src: 0.0.0.0/0
+                  src_type: CIDR_BLOCK
+                  stateless: false
+                ssh_22:
+                  description: ingress from 0.0.0.0/0 over TCP22
+                  dst_port_max: 22
+                  dst_port_min: 22
+                  protocol: TCP
+                  src: 0.0.0.0/0
+                  src_type: CIDR_BLOCK
+                  stateless: false
+            NSG-03-HUB-VCN-KEY:
+              display_name: nsg-03-hub-vcn
+              egress_rules:
+                anywhere:
+                  description: egress to 0.0.0.0/0 over TCP
+                  dst: 0.0.0.0/0
+                  dst_type: CIDR_BLOCK
+                  protocol: TCP
+                  stateless: false
+              ingress_rules:
+                http_8080:
+                  description: ingress from 0.0.0.0/0 over HTTP8080
+                  dst_port_max: 80
+                  dst_port_min: 80
+                  protocol: TCP
+                  src: 0.0.0.0/0
+                  src_type: CIDR_BLOCK
+                  stateless: false
+                ssh_22:
+                  description: ingress from 0.0.0.0/0 over TCP22
+                  dst_port_max: 22
+                  dst_port_min: 22
+                  protocol: TCP
+                  src: 0.0.0.0/0
+                  src_type: CIDR_BLOCK
+                  stateless: false
+ 
+          default-security-list:
+            display_name: seclist-def-fra-hub-vcn
+            egress_rules: []
+            ingress_rules:
+            - stateless: false
+              protocol: ICMP
+              description: ICMP type 3 code 4
+              src: 0.0.0.0/0
+              src_type: CIDR_BLOCK
+              icmp_type: 3
+              icmp_code: 4
+            - stateless: false
+              protocol: ICMP
+              description: ICMP type 3
+              src: 10.0.0.0/18
+              src_type: CIDR_BLOCK
+              icmp_type: 3
+              icmp_code: -1
+            - stateless: false
+              protocol: ICMP
+              description: ICMP type 3
+              src: 192.168.0.0/18
+              src_type: CIDR_BLOCK
+              icmp_type: 3
+              icmp_code: -1
+          security_lists:
+            SECLIST-01-HUB-KEY:
+              display_name: seclist-hub-network-lb
+              egress_rules:
+              - description: egress to 0.0.0.0/0 over ALL protocols
+                dst: 0.0.0.0/0
+                dst_type: CIDR_BLOCK
+                protocol: ALL
+                stateless: false
+              freeform_tags: 
+              ingress_rules:
+              - description: ingress from 0.0.0.0/0 TCP protocol
+                protocol: TCP
+                src: 0.0.0.0/0
+                src_type: CIDR_BLOCK
+                stateless: false
+            SECLIST-02-HUB-KEY:
+              display_name: seclist-hub-network-firewall
+              display_name: sl-02-hub-vcn
+              egress_rules:
+              - description: egress to 0.0.0.0/0 over TCP
+                dst: 0.0.0.0/0
+                dst_type: CIDR_BLOCK
+                protocol: ALL
+                stateless: false
+              ingress_rules:
+              - description: ingress from 0.0.0.0/0 over all ports
+                protocol: ALL
+                src: 0.0.0.0/0
+                src_type: CIDR_BLOCK
+                stateless: false
           route_tables:
             RT-HUB-FIREWALL-KEY:
               display_name: rt-hub-firewall
@@ -141,6 +179,7 @@ network_configuration:
             RT-HUB-UNTRUST-KEY:
               display_name: rt-hub-untrusted-lhr
               route_rules: {}
+
           subnets:
             SUBNET-HUB-FIREWALL-KEY:
               cidr_block: 10.0.0.0/24
@@ -152,7 +191,7 @@ network_configuration:
               prohibit_public_ip_on_vnic: true
               route_table_key: RT-HUB-FIREWALL-KEY
               security_list_keys:
-              - SECLIST-NETWORK-FIREWALL-KEY
+              - SECLIST-02-HUB-KEY
             SUBNET-HUB-LB-KEY:
               cidr_block: 10.0.1.0/24
               dhcp_options_key: default_dhcp_options
@@ -163,7 +202,7 @@ network_configuration:
               prohibit_public_ip_on_vnic: false
               route_table_key: RT-HUB-LB-KEY
               security_list_keys:
-              - SECLIST-LOAD-BALANCER-KEY
+              - SECLIST-01-HUB-KEY
             SUBNET-HUB-TRUST-KEY:
               cidr_block: 10.0.2.0/24
               dhcp_options_key: default_dhcp_options
@@ -174,7 +213,7 @@ network_configuration:
               prohibit_public_ip_on_vnic: true
               route_table_key: RT-HUB-TRUST-KEY
               security_list_keys:
-              - SECLIST-TRUST-KEY
+              - SECLIST-02-HUB-KEY
             SUBNET-HUB-UNTRUST-KEY:
               cidr_block: 10.0.3.0/24
               dhcp_options_key: default_dhcp_options
@@ -185,7 +224,8 @@ network_configuration:
               prohibit_public_ip_on_vnic: true
               route_table_key: RT-HUB-UNTRUST-KEY
               security_list_keys:
-              - SECLIST-UNTRUST-KEY
+              - SECLIST-02-HUB-KEY
+
           vcn_specific_gateways:
             internet_gateways: 
               GATEWAY-HUB-INTERNET-KEY:
