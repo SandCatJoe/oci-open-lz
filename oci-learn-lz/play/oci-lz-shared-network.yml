@@ -267,21 +267,21 @@ network_configuration:
                 display_name: sg-hub
                 services: all-services
 
-        workload_load_balancers:
-          LB-HUB-KEY:
-            backend_sets:
-              LB-HUB-BKSET-00:
-                health_checker:
-                  interval_ms: 10000
-                  is_force_plain_text: true
-                  port: 80
-                  protocol: HTTP
-                  retries: 3
-                  return_code: 200
-                  timeout_in_millis: 3000
-                  url_path: "/"
-                name: lb-hub-bkset-00
-                policy: LEAST_CONNECTIONS
+#        workload_load_balancers:
+#          LB-HUB-KEY:
+#            backend_sets:
+#              LB-HUB-BKSET-00:
+#                health_checker:
+#                  interval_ms: 10000
+#                  is_force_plain_text: true
+#                  port: 80
+#                  protocol: HTTP
+#                  retries: 3
+#                  return_code: 200
+#                  timeout_in_millis: 3000
+#                  url_path: "/"
+#                name: lb-hub-bkset-00
+#                policy: LEAST_CONNECTIONS
 #              LB-HUB-BKSET-01:
 #                backends:
 #                  LB-HUB-BKSET-01-BE-01:
@@ -347,10 +347,10 @@ network_configuration:
 #                        name: FORWARD_TO_BACKENDSET
 #                    condition: all(http.request.url.path sw (i '/testapp2/'))
 #                    name: testapp2
-            shape: flexible
-            shape_details:
-              maximum_bandwidth_in_mbps: 100
-              minimum_bandwidth_in_mbps: 10
-            subnet_ids: []
-            subnet_keys:
-            - SUBNET-HUB-LB-KEY
+#            shape: flexible
+#            shape_details:
+#              maximum_bandwidth_in_mbps: 100
+#              minimum_bandwidth_in_mbps: 10
+#            subnet_ids: []
+#            subnet_keys:
+#            - SUBNET-HUB-LB-KEY
