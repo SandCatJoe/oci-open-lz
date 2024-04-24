@@ -185,16 +185,16 @@ network_configuration:
                   destination: 0.0.0.0/0
                   destination_type: CIDR_BLOCK
             RT-HUB-FW-NS-KEY:
-              display_name: rt-hub-firewall
+              display_name: rt-hub-firewall-ns
               route_rules: {}
             RT-HUB-FW-EW-KEY:
-              display_name: rt-hub-firewall
+              display_name: rt-hub-firewall-ew
               route_rules: {}
             RT-HUB-MGMT-KEY:
-              display_name: rt-hub-firewall
+              display_name: rt-hub-management
               route_rules: {}
-            RT-HUB-LOGS-KEY:
-              display_name: rt-hub-firewall
+              RT-HUB-LOGS-KEY:
+              display_name: rt-hub-logs
               route_rules: {}
 
           subnets:
