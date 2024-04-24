@@ -268,18 +268,18 @@ network_configuration:
                 display_name: sg-hub
                 services: all-services
 
-#      non_vcn_specific_gateways:
-#        dynamic_routing_gateways:
-#          DRG-FRA-HUB-KEY:
-#            display_name: drg-hub
-#            drg_attachments:
-#              DRG-FRA-HUB-VCN-FRA-HUB-KEY:
-#                display_name: drgatt-hub-vcn
-#                drg_route_table_key: DRG-RT-HUB-KEY
-#                network_details:
-#                  attached_resource_key: VCN-HUB-KEY
-#                  type: VCN
-#                  route_table_key: RT-HUB-DRG-KEY
+      non_vcn_specific_gateways:
+        dynamic_routing_gateways:
+          DRG-FRA-HUB-KEY:
+            display_name: drg-hub
+            drg_attachments:
+              DRG-HUB-VCN-FRA-HUB-KEY:
+                display_name: drgatt-hub-vcn
+                drg_route_table_key: DRG-RT-HUB-KEY
+                network_details:
+                  attached_resource_key: VCN-HUB-KEY
+                  type: VCN
+                  route_table_key: RT-HUB-DRG-KEY
 #            drg_route_distributions:
 #              IMPORT-HUB-RTD-KEY:
 #                display_name: import-rtd-hub
