@@ -298,3 +298,90 @@ network_configuration:
 #                is_ecmp_enabled: false
 #                route_tables: {}
 
+        staging_load_balancers:
+          LB-HUB-KEY:
+            backend_sets:
+              LB-HUB-BKSET-00:
+                health_checker:
+                  interval_ms: 10000
+                  is_force_plain_text: true
+                  port: 80
+                  protocol: HTTP
+                  retries: 3
+                  return_code: 200
+                  timeout_in_millis: 3000
+                  url_path: "/"
+                name: lb-hub-bkset-00
+                policy: LEAST_CONNECTIONS
+#              LB-HUB-BKSET-01:
+#                backends:
+#                  LB-HUB-BKSET-01-BE-01:
+#                    ip_address: 172.168.6.63
+#                    port: 80
+#                health_checker:
+#                  interval_ms: 10000
+#                  is_force_plain_text: true
+#                  port: 80
+#                  protocol: HTTP
+#                  retries: 3
+#                  return_code: 200
+#                  timeout_in_millis: 3000
+#                  url_path: "/testapp1/"
+#                name: lb-hub-bkset-oe01-p-01-app1
+#                policy: LEAST_CONNECTIONS
+#              LB-HUB-BKSET-02:
+#                backends:
+#                  LB-HUB-BKSET-01-BE-02:
+#                    ip_address: 172.168.6.63
+#                    port: 80
+#                health_checker:
+#                  interval_ms: 10000
+#                  is_force_plain_text: true
+#                  port: 80
+#                  protocol: HTTP
+#                  retries: 3
+#                  return_code: 200
+#                  timeout_in_millis: 3000
+#                  url_path: "/testapp2/"
+#                name: lb-hub-bkset-oe01-p-01-app2
+#                policy: LEAST_CONNECTIONS
+#            display_name: lb-hub-01
+#            ip_mode: IPV4
+#            is_private: false
+#            listeners:
+#              LB1-LSNR-1-80:
+#                connection_configuration:
+#                  idle_timeout_in_seconds: 1200
+#                default_backend_set_key: LB-HUB-BKSET-00
+#                name: lb-hub-01-lsnr1-80
+#                port: '80'
+#                protocol: HTTP
+#                routing_policy_key: LB1-ROUTE-POLICY-1-OE01-P-TESTAPP-KEY
+#            network_security_group_keys:
+#            - NSG-02-HUB-VCN-KEY
+#            routing_policies:
+#              LB1-ROUTE-POLICY-1-OE01-P-TESTAPP-KEY:
+#                name: lb-hub-01-lbrule-oe01-p-01-app
+#                condition_language_version: V1
+#                rules:
+#                  lbrouterule_testapp1:
+#                    actions:
+#                      action-1:
+#                        backend_set_key: LB-HUB-BKSET-01
+#                        name: FORWARD_TO_BACKENDSET
+#                    condition: all(http.request.url.path sw (i '/testapp1/'))
+#                    name: testapp1
+#                  lbrouterule_testapp2:
+#                    actions:
+#                      action-2:
+#                        backend_set_key: LB-HUB-BKSET-02
+#                        name: FORWARD_TO_BACKENDSET
+#                    condition: all(http.request.url.path sw (i '/testapp2/'))
+#                    name: testapp2
+            shape: flexible
+            shape_details:
+              maximum_bandwidth_in_mbps: 100
+              minimum_bandwidth_in_mbps: 10
+            subnet_ids: []
+            subnet_keys:
+            - SN-HUB-LB-KEY
