@@ -64,8 +64,3 @@ compartments_configuration:
               description: Landing Zone workload staging database SQL Server compartment
               freeform_tags:
                 lz-cmp-type: workload-staging-db-sql
-groups_configuration:
-  groups: {}
-dynamic_groups_configuration:
-  dynamic_groups: {}
-policies_configuration: {}
