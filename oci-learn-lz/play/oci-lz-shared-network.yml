@@ -317,36 +317,36 @@ network_configuration:
             display_name: lb-hub-01
             ip_mode: IPV4
             is_private: false
-            listeners:
-              LB1-LSNR-1-80:
-                connection_configuration:
-                  idle_timeout_in_seconds: 1200
-                default_backend_set_key: LB-HUB-BKSET-00
-                name: lb-hub-01-lsnr1-80
-                port: '80'
-                protocol: HTTP
-                routing_policy_key: LB1-ROUTE-POLICY-1-OE01-P-TESTAPP-KEY
-            network_security_group_keys:
-            - NSG-02-HUB-VCN-KEY
-            routing_policies:
-              LB1-ROUTE-POLICY-1-OE01-P-TESTAPP-KEY:
-                name: lb-hub-01-lbrule-oe01-p-01-app
-                condition_language_version: V1
-                rules:
-                  lbrouterule_testapp1:
-                    actions:
-                      action-1:
-                        backend_set_key: LB-HUB-BKSET-01
-                        name: FORWARD_TO_BACKENDSET
-                    condition: all(http.request.url.path sw (i '/testapp1/'))
-                    name: testapp1
-                  lbrouterule_testapp2:
-                    actions:
-                      action-2:
-                        backend_set_key: LB-HUB-BKSET-02
-                        name: FORWARD_TO_BACKENDSET
-                    condition: all(http.request.url.path sw (i '/testapp2/'))
-                    name: testapp2
+#            listeners:
+#              LB1-LSNR-1-80:
+#                connection_configuration:
+#                  idle_timeout_in_seconds: 1200
+#                default_backend_set_key: LB-HUB-BKSET-00
+#                name: lb-hub-01-lsnr1-80
+#                port: '80'
+#                protocol: HTTP
+#                routing_policy_key: LB1-ROUTE-POLICY-1-OE01-P-TESTAPP-KEY
+#            network_security_group_keys:
+#            - NSG-02-HUB-VCN-KEY
+#            routing_policies:
+#              LB1-ROUTE-POLICY-1-OE01-P-TESTAPP-KEY:
+#                name: lb-hub-01-lbrule-oe01-p-01-app
+#                condition_language_version: V1
+#                rules:
+#                  lbrouterule_testapp1:
+#                    actions:
+#                      action-1:
+#                        backend_set_key: LB-HUB-BKSET-01
+#                        name: FORWARD_TO_BACKENDSET
+#                    condition: all(http.request.url.path sw (i '/testapp1/'))
+#                    name: testapp1
+#                  lbrouterule_testapp2:
+#                    actions:
+#                      action-2:
+#                        backend_set_key: LB-HUB-BKSET-02
+#                        name: FORWARD_TO_BACKENDSET
+#                    condition: all(http.request.url.path sw (i '/testapp2/'))
+#                    name: testapp2
             shape: flexible
             shape_details:
               maximum_bandwidth_in_mbps: 100
