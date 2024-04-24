@@ -18,19 +18,16 @@ groups_configuration:
       description: GRP.03 Tenancy global readers of OCI monitoring information
     GRP-BUDGET-ADMINS:
       name: lz-s-grp-budget-admins
-      description: GRP.04 Tenancy global budget control.
+      description: GRP.04 Tenancy global budget control
     GRP-AUDITORS:
       name: lz-s-grp-auditors
-      description: GRP.05 Tenancy global read access (for security auditing or health
-        checks).
+      description: GRP.05 Tenancy global read access (for security auditing or health checks)
     GRP-NETWORK-ADMINS:
       name: lz-s-grp-network-admins
-      description: GRP.06 Tenancy global and shared network administration group
-        including common OE network elements.
+      description: GRP.06 Tenancy global and shared network administration group including common OE network elements
     GRP-SECURITY-ADMINS:
       name: lz-s-grp-security-admins
       description: GRP.07 Tenancy global and shared security administration group
-
 
 
 dynamic_groups_configuration:
@@ -41,6 +38,8 @@ dynamic_groups_configuration:
       name: lz-s-dgp-security-functions
       description: DGP.01 Allows all resources of type fnfunc in the Security compartment
       matching_rule: ALL {resource.type = 'fnfun', resource.compartment.id = 'lz-s-cmp-shared-security'}
+
+      
 policies_configuration:
   enable_cis_benchmark_checks: 'false'
   supplied_policies:
@@ -149,18 +148,16 @@ policies_configuration:
       - allow group lz-s-grp-network-admins to read usage-budgets in tenancy
       - allow group lz-s-grp-network-admins to read usage-reports in tenancy
       - allow group lz-s-grp-network-admins to read objectstorage-namespaces in tenancy
-      - allow group lz-s-grp-network-admins to read all-resources in compartment lz-s-cmp-shared-network
-      - allow group lz-s-grp-network-admins to manage virtual-network-family in compartment
-        lz-s-cmp-shared-network
-      - allow group lz-s-grp-network-admins to manage dns in compartment lz-s-cmp-shared-network
-      - allow group lz-s-grp-network-admins to manage load-balancers in compartment lz-s-cmp-shared-network
-      - allow group lz-s-grp-network-admins to manage alarms in compartment lz-s-cmp-shared-network
-      - allow group lz-s-grp-network-admins to manage metrics in compartment lz-s-cmp-shared-network
-      - allow group lz-s-grp-network-admins to manage ons-family in compartment lz-s-cmp-shared-network
-      - allow group lz-s-grp-network-admins to manage orm-stacks in compartment lz-s-cmp-shared-network
-      - allow group lz-s-grp-network-admins to manage orm-jobs in compartment lz-s-cmp-shared-network
-      - allow group lz-s-grp-network-admins to manage orm-config-source-providers in compartment
-        lz-s-cmp-shared-network
+      - allow group lz-s-grp-network-admins to read all-resources in compartment lz-s-cmp-shared:lz-s-cmp-shared-network
+      - allow group lz-s-grp-network-admins to manage virtual-network-family in compartment lz-s-cmp-shared:lz-s-cmp-shared-network
+      - allow group lz-s-grp-network-admins to manage dns in compartment lz-s-cmp-shared:lz-s-cmp-shared-network
+      - allow group lz-s-grp-network-admins to manage load-balancers in compartment lz-s-cmp-shared:lz-s-cmp-shared-network
+      - allow group lz-s-grp-network-admins to manage alarms in compartment lz-s-cmp-shared:lz-s-cmp-shared-network
+      - allow group lz-s-grp-network-admins to manage metrics in compartment lz-s-cmp-shared:lz-s-cmp-shared-network
+      - allow group lz-s-grp-network-admins to manage ons-family in compartment lz-s-cmp-shared:lz-s-cmp-shared-network
+      - allow group lz-s-grp-network-admins to manage orm-stacks in compartment lz-s-cmp-shared:lz-s-cmp-shared-network
+      - allow group lz-s-grp-network-admins to manage orm-jobs in compartment lz-s-cmp-shared:lz-s-cmp-shared-network
+      - allow group lz-s-grp-network-admins to manage orm-config-source-providers in compartment lz-s-cmp-shared:lz-s-cmp-shared-network
     PCY-SECURITY-ADMINS:
       name: lz-s-pcy-security-admins
       description: POL.07 Open LZ policy which allows grp-security-admins group users to manage all security resources in the security compartment
@@ -180,48 +177,41 @@ policies_configuration:
       - allow group lz-s-grp-security-admins to read app-catalog-listing in tenancy
       - allow group lz-s-grp-security-admins to read instance-images in tenancy
       - allow group lz-s-grp-security-admins to inspect buckets in tenancy
-      - allow group lz-s-grp-security-admins to read all-resources in compartment lz-s-cmp-shared-security
-      - allow group lz-s-grp-security-admins to manage instance-family in compartment lz-s-cmp-shared-security
-      - allow group lz-s-grp-security-admins to manage volume-family in compartment lz-s-cmp-shared-security
+      - allow group lz-s-grp-security-admins to read all-resources in compartment lz-s-cmp-shared:lz-s-cmp-shared-security
+      - allow group lz-s-grp-security-admins to manage instance-family in compartment lz-s-cmp-shared:lz-s-cmp-shared-security
+      - allow group lz-s-grp-security-admins to manage volume-family in compartment lz-s-cmp-shared:lz-s-cmp-shared-security
         where all{request.permission != 'VOLUME_BACKUP_DELETE', request.permission
         != 'VOLUME_DELETE', request.permission != 'BOOT_VOLUME_BACKUP_DELETE'}
-      - allow group lz-s-grp-security-admins to manage object-family in compartment lz-s-cmp-shared-security
+      - allow group lz-s-grp-security-admins to manage object-family in compartment lz-s-cmp-shared:lz-s-cmp-shared-security
         where all{request.permission != 'OBJECT_DELETE', request.permission != 'BUCKET_DELETE'}
-      - allow group lz-s-grp-security-admins to manage file-family in compartment lz-s-cmp-shared-security
+      - allow group lz-s-grp-security-admins to manage file-family in compartment lz-s-cmp-shared:lz-s-cmp-shared-security
         where all{request.permission != 'FILE_SYSTEM_DELETE', request.permission !=
         'MOUNT_TARGET_DELETE', request.permission != 'EXPORT_SET_DELETE', request.permission
         != 'FILE_SYSTEM_DELETE_SNAPSHOT', request.permission != 'FILE_SYSTEM_NFSv3_UNEXPORT'}
-      - allow group lz-s-grp-security-admins to manage vaults in compartment lz-s-cmp-shared-security
-      - allow group lz-s-grp-security-admins to manage keys in compartment lz-s-cmp-shared-security
-      - allow group lz-s-grp-security-admins to manage secret-family in compartment lz-s-cmp-shared-security
-      - allow group lz-s-grp-security-admins to manage logging-family in compartment lz-s-cmp-shared-security
-      - allow group lz-s-grp-security-admins to manage serviceconnectors in compartment
-        lz-s-cmp-shared-security
-      - allow group lz-s-grp-security-admins to manage streams in compartment lz-s-cmp-shared-security
-      - allow group lz-s-grp-security-admins to manage ons-family in compartment lz-s-cmp-shared-security
-      - allow group lz-s-grp-security-admins to manage functions-family in compartment
-        lz-s-cmp-shared-security
-      - allow group lz-s-grp-security-admins to manage waas-family in compartment lz-s-cmp-shared-security
-      - allow group lz-s-grp-security-admins to manage security-zone in compartment lz-s-cmp-shared-security
-      - allow group lz-s-grp-security-admins to manage orm-stacks in compartment lz-s-cmp-shared-security
-      - allow group lz-s-grp-security-admins to manage orm-jobs in compartment lz-s-cmp-shared-security
-      - allow group lz-s-grp-security-admins to manage orm-config-source-providers in compartment
-        lz-s-cmp-shared-security
-      - allow group lz-s-grp-security-admins to manage vss-family in compartment lz-s-cmp-shared-security
-      - allow group lz-s-grp-security-admins to read work-requests in compartment lz-s-cmp-shared-security
-      - allow group lz-s-grp-security-admins to manage bastion-family in compartment lz-s-cmp-shared-security
-      - allow group lz-s-grp-security-admins to read instance-agent-plugins in compartment
-        lz-s-cmp-shared-security
-      - allow group lz-s-grp-security-admins to manage cloudevents-rules in compartment
-        lz-s-cmp-shared-security
-      - allow group lz-s-grp-security-admins to manage alarms in compartment lz-s-cmp-shared-security
-      - allow group lz-s-grp-security-admins to manage metrics in compartment lz-s-cmp-shared-security
-      - allow group lz-s-grp-security-admins to use key-delegate in compartment lz-s-cmp-shared-security
-      - allow group lz-s-grp-security-admins to read virtual-network-family in compartment
-        lz-s-cmp-shared-security
-      - allow group lz-s-grp-security-admins to use subnets in compartment lz-s-cmp-shared-security
-      - allow group lz-s-grp-security-admins to use network-security-groups in compartment
-        lz-s-cmp-shared-security
-      - allow group lz-s-grp-security-admins to use vnics in compartment lz-s-cmp-shared-security
-      - allow group lz-s-grp-security-admins to manage private-ips in compartment lz-s-cmp-shared-security
-      - allow group lz-s-grp-security-admins to read keys in compartment lz-s-cmp-shared-security
+      - allow group lz-s-grp-security-admins to manage vaults in compartment lz-s-cmp-shared:lz-s-cmp-shared-security
+      - allow group lz-s-grp-security-admins to manage keys in compartment lz-s-cmp-shared:lz-s-cmp-shared-security
+      - allow group lz-s-grp-security-admins to manage secret-family in compartment lz-s-cmp-shared:lz-s-cmp-shared-security
+      - allow group lz-s-grp-security-admins to manage logging-family in compartment lz-s-cmp-shared:lz-s-cmp-shared-security
+      - allow group lz-s-grp-security-admins to manage serviceconnectors in compartment lz-s-cmp-shared:lz-s-cmp-shared-security
+      - allow group lz-s-grp-security-admins to manage streams in compartment lz-s-cmp-shared:lz-s-cmp-shared-security
+      - allow group lz-s-grp-security-admins to manage ons-family in compartment lz-s-cmp-shared:lz-s-cmp-shared-security
+      - allow group lz-s-grp-security-admins to manage functions-family in compartment lz-s-cmp-shared:lz-s-cmp-shared-security
+      - allow group lz-s-grp-security-admins to manage waas-family in compartment lz-s-cmp-shared:lz-s-cmp-shared-security
+      - allow group lz-s-grp-security-admins to manage security-zone in compartment lz-s-cmp-shared:lz-s-cmp-shared-security
+      - allow group lz-s-grp-security-admins to manage orm-stacks in compartment lz-s-cmp-shared:lz-s-cmp-shared-security
+      - allow group lz-s-grp-security-admins to manage orm-jobs in compartment lz-s-cmp-shared:lz-s-cmp-shared-security
+      - allow group lz-s-grp-security-admins to manage orm-config-source-providers in compartment lz-s-cmp-shared:lz-s-cmp-shared-security
+      - allow group lz-s-grp-security-admins to manage vss-family in compartment lz-s-cmp-shared:lz-s-cmp-shared-security
+      - allow group lz-s-grp-security-admins to read work-requests in compartment lz-s-cmp-shared:lz-s-cmp-shared-security
+      - allow group lz-s-grp-security-admins to manage bastion-family in compartment lz-s-cmp-shared:lz-s-cmp-shared-security
+      - allow group lz-s-grp-security-admins to read instance-agent-plugins in compartment lz-s-cmp-shared:lz-s-cmp-shared-security
+      - allow group lz-s-grp-security-admins to manage cloudevents-rules in compartment lz-s-cmp-shared:lz-s-cmp-shared-security
+      - allow group lz-s-grp-security-admins to manage alarms in compartment lz-s-cmp-shared:lz-s-cmp-shared-security
+      - allow group lz-s-grp-security-admins to manage metrics in compartment lz-s-cmp-shared:lz-s-cmp-shared-security
+      - allow group lz-s-grp-security-admins to use key-delegate in compartment lz-s-cmp-shared:lz-s-cmp-shared-security
+      - allow group lz-s-grp-security-admins to read virtual-network-family in compartment lz-s-cmp-shared:lz-s-cmp-shared-security
+      - allow group lz-s-grp-security-admins to use subnets in compartment lz-s-cmp-shared:lz-s-cmp-shared-security
+      - allow group lz-s-grp-security-admins to use network-security-groups in compartment lz-s-cmp-shared:lz-s-cmp-shared-security
+      - allow group lz-s-grp-security-admins to use vnics in compartment lz-s-cmp-shared:lz-s-cmp-shared-security
+      - allow group lz-s-grp-security-admins to manage private-ips in compartment lz-s-cmp-shared:lz-s-cmp-shared-security
+      - allow group lz-s-grp-security-admins to read keys in compartment lz-s-cmp-shared:lz-s-cmp-shared-security
