@@ -384,4 +384,4 @@ network_configuration:
               minimum_bandwidth_in_mbps: 10
             subnet_ids: []
             subnet_keys:
-            - SN-HUB-LB-KEY
+            - SUBNET-HUB-LB-KEY
