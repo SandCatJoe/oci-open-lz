@@ -149,18 +149,18 @@ policies_configuration:
       - allow group lz-s-grp-network-admins to read usage-budgets in tenancy
       - allow group lz-s-grp-network-admins to read usage-reports in tenancy
       - allow group lz-s-grp-network-admins to read objectstorage-namespaces in tenancy
-      - allow group lz-s-grp-network-admins to read all-resources in compartment cmp-network
+      - allow group lz-s-grp-network-admins to read all-resources in compartment lz-s-cmp-shared-network
       - allow group lz-s-grp-network-admins to manage virtual-network-family in compartment
-        cmp-network
-      - allow group lz-s-grp-network-admins to manage dns in compartment cmp-network
-      - allow group lz-s-grp-network-admins to manage load-balancers in compartment cmp-network
-      - allow group lz-s-grp-network-admins to manage alarms in compartment cmp-network
-      - allow group lz-s-grp-network-admins to manage metrics in compartment cmp-network
-      - allow group lz-s-grp-network-admins to manage ons-family in compartment cmp-network
-      - allow group lz-s-grp-network-admins to manage orm-stacks in compartment cmp-network
-      - allow group lz-s-grp-network-admins to manage orm-jobs in compartment cmp-network
+        lz-s-cmp-shared-network
+      - allow group lz-s-grp-network-admins to manage dns in compartment lz-s-cmp-shared-network
+      - allow group lz-s-grp-network-admins to manage load-balancers in compartment lz-s-cmp-shared-network
+      - allow group lz-s-grp-network-admins to manage alarms in compartment lz-s-cmp-shared-network
+      - allow group lz-s-grp-network-admins to manage metrics in compartment lz-s-cmp-shared-network
+      - allow group lz-s-grp-network-admins to manage ons-family in compartment lz-s-cmp-shared-network
+      - allow group lz-s-grp-network-admins to manage orm-stacks in compartment lz-s-cmp-shared-network
+      - allow group lz-s-grp-network-admins to manage orm-jobs in compartment lz-s-cmp-shared-network
       - allow group lz-s-grp-network-admins to manage orm-config-source-providers in compartment
-        cmp-network
+        lz-s-cmp-shared-network
     PCY-SECURITY-ADMINS:
       name: lz-s-pcy-security-admins
       description: POL.07 Open LZ policy which allows grp-security-admins group users to manage all security resources in the security compartment
