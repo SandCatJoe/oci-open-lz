@@ -161,10 +161,8 @@ network_configuration:
                 src: 0.0.0.0/0
                 src_type: CIDR_BLOCK
                 stateless: false
+
           route_tables:
-            RT-HUB-FIREWALL-KEY:
-              display_name: rt-hub-firewall
-              route_rules: {}
             RT-HUB-LB-KEY:
               display_name: rt-hub-network-lb-lhr
               route_rules:
@@ -173,29 +171,24 @@ network_configuration:
                   description: Route for internet access
                   destination: 0.0.0.0/0
                   destination_type: CIDR_BLOCK
-            RT-HUB-TRUST-KEY:
-              display_name: rt-hub-trusted-lhr
+            RT-HUB-FW-NS-KEY:
+              display_name: rt-hub-firewall
               route_rules: {}
-            RT-HUB-UNTRUST-KEY:
-              display_name: rt-hub-untrusted-lhr
+            RT-HUB-FW-EW-KEY:
+              display_name: rt-hub-firewall
+              route_rules: {}
+            RT-HUB-MGMT-KEY:
+              display_name: rt-hub-firewall
+              route_rules: {}
+            RT-HUB-LOGS-KEY:
+              display_name: rt-hub-firewall
               route_rules: {}
 
           subnets:
-            SUBNET-HUB-FIREWALL-KEY:
+            SUBNET-HUB-LB-KEY:
               cidr_block: 10.0.0.0/24
               dhcp_options_key: default_dhcp_options
-              display_name: sn-hub-firewall
-              dns_label: nfw
-              ipv6cidr_blocks: []
-              prohibit_internet_ingress: true
-              prohibit_public_ip_on_vnic: true
-              route_table_key: RT-HUB-FIREWALL-KEY
-              security_list_keys:
-              - SECLIST-02-HUB-KEY
-            SUBNET-HUB-LB-KEY:
-              cidr_block: 10.0.1.0/24
-              dhcp_options_key: default_dhcp_options
-              display_name: sn-hub-network-lb
+              display_name: sn-hub-lb
               dns_label: nlb
               ipv6cidr_blocks: []
               prohibit_internet_ingress: false
@@ -203,26 +196,48 @@ network_configuration:
               route_table_key: RT-HUB-LB-KEY
               security_list_keys:
               - SECLIST-01-HUB-KEY
-            SUBNET-HUB-TRUST-KEY:
-              cidr_block: 10.0.2.0/24
+            SUBNET-HUB-FW-NS-KEY:
+              cidr_block: 10.0.1.0/24
               dhcp_options_key: default_dhcp_options
-              display_name: sn-hub-trusted
-              dns_label: trst
+              display_name: sn-hub-fw-ns
+              dns_label: nfwns
               ipv6cidr_blocks: []
               prohibit_internet_ingress: true
               prohibit_public_ip_on_vnic: true
-              route_table_key: RT-HUB-TRUST-KEY
+              route_table_key: RT-HUB-FW-NS-KEY
               security_list_keys:
               - SECLIST-02-HUB-KEY
-            SUBNET-HUB-UNTRUST-KEY:
-              cidr_block: 10.0.3.0/24
+            SUBNET-HUB-FW-EW-KEY:
+              cidr_block: 10.0.2.0/24
               dhcp_options_key: default_dhcp_options
-              display_name: sn-hub-untrusted
-              dns_label: utrst
+              display_name: sn-hub-fw-ew
+              dns_label: nfwew
               ipv6cidr_blocks: []
               prohibit_internet_ingress: true
               prohibit_public_ip_on_vnic: true
-              route_table_key: RT-HUB-UNTRUST-KEY
+              route_table_key: RT-HUB-FW-EW-KEY
+              security_list_keys:
+              - SECLIST-02-HUB-KEY
+            SUBNET-HUB-LOGS-KEY:
+              cidr_block: 10.0.3.0/24
+              dhcp_options_key: default_dhcp_options
+              display_name: sn-hub-logs
+              dns_label: lgs
+              ipv6cidr_blocks: []
+              prohibit_internet_ingress: true
+              prohibit_public_ip_on_vnic: true
+              route_table_key: RT-HUB-LOGS-KEY
+              security_list_keys:
+              - SECLIST-02-HUB-KEY
+            SUBNET-HUB-MGMT-KEY:
+              cidr_block: 10.0.4.0/24
+              dhcp_options_key: default_dhcp_options
+              display_name: sn-hub-mgmt
+              dns_label: mgmt
+              ipv6cidr_blocks: []
+              prohibit_internet_ingress: true
+              prohibit_public_ip_on_vnic: true
+              route_table_key: RT-HUB-MGMT-KEY
               security_list_keys:
               - SECLIST-02-HUB-KEY
 
