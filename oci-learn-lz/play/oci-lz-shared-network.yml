@@ -164,7 +164,7 @@ network_configuration:
           route_tables:
             RT-HUB-DRG-KEY:
               display_name: rt-hub-drg
-              route_rules:
+              route_rules: {}
 #                rt_hub_def_sn
 #                  description: Route outgoing traffic
 #                  destination: 0.0.0.0/0
