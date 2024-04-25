@@ -267,11 +267,11 @@ network_configuration:
                 display_name: sg-core
                 services: all-services
 
-#      non_vcn_specific_gateways:
-#        dynamic_routing_gateways:
-#          DRG-CORE-KEY:
-#            display_name: drg-fra-core
-#            drg_attachments:
+      non_vcn_specific_gateways:
+        dynamic_routing_gateways:
+          DRG-CORE-KEY:
+            display_name: drg-fra-core
+            drg_attachments: {}
 #              DRG-CORE-VCN-CORE-KEY:
 #                display_name: drgatt-core-vcn
 #                drg_route_table_key: DRG-RT-CORE-KEY
