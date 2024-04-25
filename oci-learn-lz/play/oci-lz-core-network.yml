@@ -303,17 +303,17 @@ network_configuration:
 ##                network_details:
 ##                  attached_resource_id: "<VCN vcn-fra-oe01-p OCID>"
 ##                  type: VCN
-#            drg_route_distributions:
-#              IMPORT-CORE-RTD-KEY:
-#                display_name: import-rtd-core
-#                distribution_type: IMPORT
-#                statements:
-#                  drg_route_distribution_vcn:
-#                    priority: 1
-#                    action: ACCEPT
-#                    match_criteria:
-#                      match_type: DRG_ATTACHMENT_TYPE
-#                      attachment_type: VCN
+            drg_route_distributions:
+              IMPORT-CORE-RTD-KEY:
+                display_name: import-rtd-core
+                distribution_type: IMPORT
+                statements:
+                  drg_route_distribution_vcn:
+                    priority: 1
+                    action: ACCEPT
+                    match_criteria:
+                      match_type: DRG_ATTACHMENT_TYPE
+                      attachment_type: VCN
 #            drg_route_tables:
 #              DRG-RT-CORE-KEY:
 #                display_name: drg-rt-core
