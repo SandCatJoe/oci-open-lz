@@ -10,23 +10,23 @@ network_configuration:
     lz-data-type: staging
     lz-version: 0.1
   network_configuration_categories:
-    HUB:
-      category_compartment_id: CMP-SHARED-NETWORK-KEY
+    CORE:
+      category_compartment_id: CMP-CORE-NETWORK-KEY
       category_freeform_tags:
-        sub-environment: hub
+        sub-environment: core
       vcns:
-        VCN-HUB-KEY:
+        VCN-CORE-KEY:
           block_nat_traffic: false
           cidr_blocks:
           - 10.0.0.0/16
-          display_name: vcn-hub-lhr
-          dns_label: hub
+          display_name: vcn-core
+          dns_label: core
           is_ipv6enabled: false
           is_oracle_gua_allocation_enabled: false
  
           network_security_groups:
-            NSG-01-HUB-VCN-KEY:
-              display_name: nsg-01-hub-vcn
+            NSG-01-CORE-VCN-KEY:
+              display_name: nsg-01-core-vcn
               egress_rules:
                 anywhere:
                   description: egress to 0.0.0.0/0 over TCP
@@ -44,8 +44,8 @@ network_configuration:
                   src: 0.0.0.0/0
                   src_type: CIDR_BLOCK
                   stateless: false
-            NSG-02-HUB-VCN-KEY:
-              display_name: nsg-02-hub-vcn
+            NSG-02-CORE-VCN-KEY:
+              display_name: nsg-02-core-vcn
               egress_rules:
                 anywhere:
                   description: egress to 0.0.0.0/0 over TCP
@@ -78,8 +78,8 @@ network_configuration:
                   src: 0.0.0.0/0
                   src_type: CIDR_BLOCK
                   stateless: false
-            NSG-03-HUB-VCN-KEY:
-              display_name: nsg-03-hub-vcn
+            NSG-03-CORE-VCN-KEY:
+              display_name: nsg-03-core-vcn
               egress_rules:
                 anywhere:
                   description: egress to 0.0.0.0/0 over TCP
@@ -106,7 +106,7 @@ network_configuration:
                   stateless: false
  
           default-security-list:
-            display_name: sl-def-hub-vcn
+            display_name: sl-def-core-vcn
             egress_rules: []
             ingress_rules:
             - stateless: false
@@ -131,8 +131,8 @@ network_configuration:
               icmp_type: 3
               icmp_code: -1
           security_lists:
-            SECLIST-01-HUB-KEY:
-              display_name: sl-hub-01
+            SECLIST-01-CORE-KEY:
+              display_name: sl-core-01
               egress_rules:
               - description: egress to 0.0.0.0/0 over ALL protocols
                 dst: 0.0.0.0/0
@@ -146,8 +146,8 @@ network_configuration:
                 src: 0.0.0.0/0
                 src_type: CIDR_BLOCK
                 stateless: false
-            SECLIST-02-HUB-KEY:
-              display_name: sl-hub-02
+            SECLIST-02-CORE-KEY:
+              display_name: sl-core-02
               egress_rules:
               - description: egress to 0.0.0.0/0 over TCP
                 dst: 0.0.0.0/0
@@ -162,150 +162,150 @@ network_configuration:
                 stateless: false
 
           route_tables:
-            RT-HUB-DRG-KEY:
-              display_name: rt-hub-drg
+            RT-CORE-DRG-KEY:
+              display_name: rt-core-drg
               route_rules: {}
-#                rt_hub_def_sn
+#                rt_core_def_sn
 #                  description: Route outgoing traffic
 #                  destination: 0.0.0.0/0
 #                  destination_type: CIDR_BLOCK
 #                  network_entity_id: "<NS PRIVATE IP OCID>"
-#                rt_hub_lb_sn:
+#                rt_core_lb_sn:
 #                  description: Route incoming traffic to Hub LB subnet
 #                  destination: 10.0.0.0/24
 #                  destination_type: CIDR_BLOCK
 #                  network_entity_id: "<NS PRIVATE IP OCID>"
-            RT-HUB-LB-KEY:
-              display_name: rt-hub-network-lb-lhr
+            RT-CORE-LB-KEY:
+              display_name: rt-core-network-lb-lhr
               route_rules:
                 internet_route:
-                  network_entity_key: GATEWAY-HUB-INTERNET-KEY
+                  network_entity_key: GATEWAY-CORE-INTERNET-KEY
                   description: Route for internet access
                   destination: 0.0.0.0/0
                   destination_type: CIDR_BLOCK
-            RT-HUB-FW-NS-KEY:
-              display_name: rt-hub-firewall-ns
+            RT-CORE-FW-NS-KEY:
+              display_name: rt-core-firewall-ns
               route_rules: {}
-            RT-HUB-FW-EW-KEY:
-              display_name: rt-hub-firewall-ew
+            RT-CORE-FW-EW-KEY:
+              display_name: rt-core-firewall-ew
               route_rules: {}
-            RT-HUB-MGMT-KEY:
-              display_name: rt-hub-management
+            RT-CORE-MGMT-KEY:
+              display_name: rt-core-management
               route_rules: {}
-            RT-HUB-LOGS-KEY:
-              display_name: rt-hub-logs
+            RT-CORE-LOGS-KEY:
+              display_name: rt-core-logs
               route_rules: {}
 
           subnets:
-            SUBNET-HUB-LB-KEY:
+            SUBNET-CORE-LB-KEY:
               cidr_block: 10.0.0.0/24
               dhcp_options_key: default_dhcp_options
-              display_name: sn-hub-lb
+              display_name: sn-core-lb
               dns_label: nlb
               ipv6cidr_blocks: []
               prohibit_internet_ingress: false
               prohibit_public_ip_on_vnic: false
-              route_table_key: RT-HUB-LB-KEY
+              route_table_key: RT-CORE-LB-KEY
               security_list_keys:
-              - SECLIST-01-HUB-KEY
-            SUBNET-HUB-FW-NS-KEY:
+              - SECLIST-01-CORE-KEY
+            SUBNET-CORE-FW-NS-KEY:
               cidr_block: 10.0.1.0/24
               dhcp_options_key: default_dhcp_options
-              display_name: sn-hub-fw-ns
+              display_name: sn-core-fw-ns
               dns_label: nfwns
               ipv6cidr_blocks: []
               prohibit_internet_ingress: true
               prohibit_public_ip_on_vnic: true
-              route_table_key: RT-HUB-FW-NS-KEY
+              route_table_key: RT-CORE-FW-NS-KEY
               security_list_keys:
-              - SECLIST-02-HUB-KEY
-            SUBNET-HUB-FW-EW-KEY:
+              - SECLIST-02-CORE-KEY
+            SUBNET-CORE-FW-EW-KEY:
               cidr_block: 10.0.2.0/24
               dhcp_options_key: default_dhcp_options
-              display_name: sn-hub-fw-ew
+              display_name: sn-core-fw-ew
               dns_label: nfwew
               ipv6cidr_blocks: []
               prohibit_internet_ingress: true
               prohibit_public_ip_on_vnic: true
-              route_table_key: RT-HUB-FW-EW-KEY
+              route_table_key: RT-CORE-FW-EW-KEY
               security_list_keys:
-              - SECLIST-02-HUB-KEY
-            SUBNET-HUB-LOGS-KEY:
+              - SECLIST-02-CORE-KEY
+            SUBNET-CORE-LOGS-KEY:
               cidr_block: 10.0.3.0/24
               dhcp_options_key: default_dhcp_options
-              display_name: sn-hub-logs
+              display_name: sn-core-logs
               dns_label: lgs
               ipv6cidr_blocks: []
               prohibit_internet_ingress: true
               prohibit_public_ip_on_vnic: true
-              route_table_key: RT-HUB-LOGS-KEY
+              route_table_key: RT-CORE-LOGS-KEY
               security_list_keys:
-              - SECLIST-02-HUB-KEY
-            SUBNET-HUB-MGMT-KEY:
+              - SECLIST-02-CORE-KEY
+            SUBNET-CORE-MGMT-KEY:
               cidr_block: 10.0.4.0/24
               dhcp_options_key: default_dhcp_options
-              display_name: sn-hub-mgmt
+              display_name: sn-core-mgmt
               dns_label: mgmt
               ipv6cidr_blocks: []
               prohibit_internet_ingress: true
               prohibit_public_ip_on_vnic: true
-              route_table_key: RT-HUB-MGMT-KEY
+              route_table_key: RT-CORE-MGMT-KEY
               security_list_keys:
-              - SECLIST-02-HUB-KEY
+              - SECLIST-02-CORE-KEY
 
           vcn_specific_gateways:
             internet_gateways: 
-              GATEWAY-HUB-INTERNET-KEY:
+              GATEWAY-CORE-INTERNET-KEY:
                 enabled: true
-                display_name: igw-hub
+                display_name: igw-core
             nat_gateways:
-              GATEWAY-HUB-NAT-KEY:
+              GATEWAY-CORE-NAT-KEY:
                 block_traffic: false
-                display_name: ngw-hub
+                display_name: ngw-core
             service_gateways:
-              GATEWAY-HUB-SERVICE-GATEWAY:
-                display_name: sg-hub
+              GATEWAY-CORE-SERVICE-GATEWAY:
+                display_name: sg-core
                 services: all-services
 
 #      non_vcn_specific_gateways:
 #        dynamic_routing_gateways:
-#          DRG-HUB-KEY:
-#            display_name: drg-fra-hub
+#          DRG-CORE-KEY:
+#            display_name: drg-fra-core
 #            drg_attachments:
-#              DRG-HUB-VCN-HUB-KEY:
-#                display_name: drgatt-hub-vcn
-#                drg_route_table_key: DRG-RT-HUB-KEY
+#              DRG-CORE-VCN-CORE-KEY:
+#                display_name: drgatt-core-vcn
+#                drg_route_table_key: DRG-RT-CORE-KEY
 #                network_details:
-#                  attached_resource_key: VCN-HUB-KEY
+#                  attached_resource_key: VCN-CORE-KEY
 #                  type: VCN
-#                  route_table_key: DRG-RT-HUB-KEY
-##              DRGATT-HUB-VCN-OE01-CO-KEY:
-##                display_name: drgatt-fra-hub-fra-oe01-co-vcn
+#                  route_table_key: DRG-RT-CORE-KEY
+##              DRGATT-CORE-VCN-OE01-CO-KEY:
+##                display_name: drgatt-fra-core-fra-oe01-co-vcn
 ##                drg_route_table_key: DRG-RT-SPOKES-KEY
 ##                network_details:
 ##                  attached_resource_id: "<VCN vcn-fra-oe01-co OCID>"
 ##                  type: VCN
-##              DRGATT-HUB-VCN-OE01-KEY:
-##                display_name: drgatt-hub-oe01-dev-vcn
+##              DRGATT-CORE-VCN-OE01-KEY:
+##                display_name: drgatt-core-oe01-dev-vcn
 ##                drg_route_table_key: DRG-RT-SPOKES-KEY
 ##                network_details:
 ##                  attached_resource_id: "<VCN vcn-fra-oe01-dev OCID>"
 ##                  type: VCN
-##              DRGATT-HUB-VCN-OE01-NP-KEY:
-##                display_name: drgatt-hub-oe01-np-vcn
+##              DRGATT-CORE-VCN-OE01-NP-KEY:
+##                display_name: drgatt-core-oe01-np-vcn
 ##                drg_route_table_key: DRG-RT-SPOKES-KEY
 ##                network_details:
 ##                  attached_resource_id: "<VCN vcn-fra-oe01-np OCID>"
 ##                  type: VCN
-##              DRGATT-HUB-VCN-OE01-P-KEY:
-##                display_name: drgatt-hub-oe01-p-vcn
+##              DRGATT-CORE-VCN-OE01-P-KEY:
+##                display_name: drgatt-core-oe01-p-vcn
 ##                drg_route_table_key: DRG-RT-SPOKES-KEY
 ##                network_details:
 ##                  attached_resource_id: "<VCN vcn-fra-oe01-p OCID>"
 ##                  type: VCN
 #            drg_route_distributions:
-#              IMPORT-HUB-RTD-KEY:
-#                display_name: import-rtd-hub
+#              IMPORT-CORE-RTD-KEY:
+#                display_name: import-rtd-core
 #                distribution_type: IMPORT
 #                statements:
 #                  drg_route_distribution_vcn:
@@ -315,9 +315,9 @@ network_configuration:
 #                      match_type: DRG_ATTACHMENT_TYPE
 #                      attachment_type: VCN
 #            drg_route_tables:
-#              DRG-RT-HUB-KEY:
-#                display_name: drg-rt-hub
-#                import_drg_route_distribution_key: IMPORT-HUB-RTD-KEY
+#              DRG-RT-CORE-KEY:
+#                display_name: drg-rt-core
+#                import_drg_route_distribution_key: IMPORT-CORE-RTD-KEY
 #                is_ecmp_enabled: false
 #                route_tables: {}
 ##              DRG-RT-SPOKES-KEY:
@@ -327,4 +327,4 @@ network_configuration:
 ##                  DRG-RT-SPOKES-STATIC-ROUTE:
 ##                    destination: 0.0.0.0/0
 ##                    destination_type: VCN
-##                    next_hop_drg_attachment_key: DRG-HUB-VCN-HUB-KEY
+##                    next_hop_drg_attachment_key: DRG-CORE-VCN-CORE-KEY
