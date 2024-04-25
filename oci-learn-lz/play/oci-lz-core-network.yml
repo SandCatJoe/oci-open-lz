@@ -10,7 +10,7 @@ network_configuration:
     lz-data-type: staging
     lz-version: 0.1
   network_configuration_categories:
-    CORE:
+    core:
       category_compartment_id: CMP-CORE-NETWORK-KEY
       category_freeform_tags:
         sub-environment: core
