@@ -271,14 +271,14 @@ network_configuration:
         dynamic_routing_gateways:
           DRG-CORE-KEY:
             display_name: drg-core
-            drg_attachments: 
-              DRG-CORE-VCN-CORE-KEY:
-                display_name: drgatt-core-vcn
-                drg_route_table_key: DRG-RT-CORE-KEY
-                network_details:
-                  attached_resource_key: VCN-CORE-KEY
-                  type: VCN
-                  route_table_key: DRG-RT-CORE-KEY
+            drg_attachments:{} 
+#              DRG-CORE-VCN-CORE-KEY:
+#                display_name: drgatt-core-vcn
+#                drg_route_table_key: DRG-RT-CORE-KEY
+#                network_details:
+#                  attached_resource_key: VCN-CORE-KEY
+#                  type: VCN
+#                  route_table_key: DRG-RT-CORE-KEY
 ##              DRGATT-CORE-VCN-OE01-CO-KEY:
 ##                display_name: drgatt-fra-core-fra-oe01-co-vcn
 ##                drg_route_table_key: DRG-RT-SPOKES-KEY
@@ -303,23 +303,23 @@ network_configuration:
 ##                network_details:
 ##                  attached_resource_id: "<VCN vcn-fra-oe01-p OCID>"
 ##                  type: VCN
-            drg_route_distributions:
-              IMPORT-CORE-RTD-KEY:
-                display_name: import-rtd-core
-                distribution_type: IMPORT
-                statements:
-                  drg_route_distribution_vcn:
-                    priority: 1
-                    action: ACCEPT
-                    match_criteria:
-                      match_type: DRG_ATTACHMENT_TYPE
-                      attachment_type: VCN
-            drg_route_tables:
-              DRG-RT-CORE-KEY:
-                display_name: drg-rt-core
-                import_drg_route_distribution_key: IMPORT-CORE-RTD-KEY
-                is_ecmp_enabled: false
-                route_tables: {}
+#            drg_route_distributions:
+#              IMPORT-CORE-RTD-KEY:
+#                display_name: import-rtd-core
+#                distribution_type: IMPORT
+#                statements:
+#                  drg_route_distribution_vcn:
+#                    priority: 1
+#                    action: ACCEPT
+#                    match_criteria:
+#                      match_type: DRG_ATTACHMENT_TYPE
+#                      attachment_type: VCN
+#            drg_route_tables:
+#              DRG-RT-CORE-KEY:
+#                display_name: drg-rt-core
+#                import_drg_route_distribution_key: IMPORT-CORE-RTD-KEY
+#                is_ecmp_enabled: false
+#                route_tables: {}
 ##              DRG-RT-SPOKES-KEY:
 ##                display_name: drg-rt-fra-spokes
 ##                is_ecmp_enabled: false
