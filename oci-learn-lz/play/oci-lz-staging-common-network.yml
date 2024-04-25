@@ -20,7 +20,7 @@ network_configuration:
           cidr_blocks:
           - 10.10.0.0/16
           display_name: vcn-staging-common
-          dns_label: staging-common
+          dns_label: stage
           is_ipv6enabled: false
           is_oracle_gua_allocation_enabled: false
  
