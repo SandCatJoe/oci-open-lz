@@ -250,10 +250,6 @@ network_configuration:
               - SECLIST-02-STAGING-COMMON-KEY
 
           vcn_specific_gateways:
-            internet_gateways: 
-              GATEWAY-STAGING-COMMON-INTERNET-KEY:
-                enabled: true
-                display_name: igw-staging-common
             nat_gateways:
               GATEWAY-STAGING-COMMON-NAT-KEY:
                 block_traffic: false
