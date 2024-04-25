@@ -4,11 +4,11 @@
 # ####################################################################################################### #
 
 ---
-network_configuration:
-  default_enable_cis_checks: false
-  default_freeform_tags:
-    lz-data-type: staging
-    lz-version: 0.1
+#network_configuration:
+#  default_enable_cis_checks: false
+#  default_freeform_tags:
+#    lz-data-type: staging
+#    lz-version: 0.1
   network_configuration_categories:
     STAGING-COMMON:
       category_compartment_id: CMP-STAGING-COMMON-NETWORK-KEY
