@@ -271,7 +271,7 @@ network_configuration:
         dynamic_routing_gateways:
           DRG-CORE-KEY:
             display_name: drg-core
-            drg_attachments:{} 
+            drg_attachments: 
 #              DRG-CORE-VCN-CORE-KEY:
 #                display_name: drgatt-core-vcn
 #                drg_route_table_key: DRG-RT-CORE-KEY
