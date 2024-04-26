@@ -23,15 +23,6 @@ network_configuration:
           dns_label: core
           is_ipv6enabled: false
           is_oracle_gua_allocation_enabled: false
-        VCN-STAGING-COMMON-KEY:
-          block_nat_traffic: false
-          cidr_blocks:
-          - 10.10.0.0/16
-          display_name: vcn-staging-common
-          dns_label: stage
-          is_ipv6enabled: false
-          is_oracle_gua_allocation_enabled: false
-
 
           network_security_groups:
             NSG-01-CORE-VCN-KEY:
@@ -337,3 +328,15 @@ network_configuration:
 ##                    destination: 0.0.0.0/0
 ##                    destination_type: VCN
 ##                    next_hop_drg_attachment_key: DRG-CORE-VCN-CORE-KEY
+    staging-common:
+      category_compartment_id: CMP-CORE-NETWORK-KEY
+      category_freeform_tags:
+        sub-environment: core
+        VCN-STAGING-COMMON-KEY:
+          block_nat_traffic: false
+          cidr_blocks:
+          - 10.10.0.0/16
+          display_name: vcn-staging-common
+          dns_label: stage
+          is_ipv6enabled: false
+          is_oracle_gua_allocation_enabled: false
